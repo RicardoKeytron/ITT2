@@ -878,6 +878,98 @@
     .ring1 { width: 140px; height: 140px; }
     .ia-center { width: 90px; height: 90px; font-size: 1.8rem; }
   }
+
+
+  /* ===== HERO TITLE MOBILE/TABLET HARD FIX =====
+     Evita que "Telecomunicación" se corte en móviles, tablets y navegadores
+     con renderizado distinto de fuentes + background-clip.
+  */
+  #hero {
+    max-width: none !important;
+    width: 100% !important;
+    padding-left: clamp(1rem, 4vw, 2rem) !important;
+    padding-right: clamp(1rem, 4vw, 2rem) !important;
+  }
+
+  #hero h1 {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    text-align: center !important;
+    overflow: visible !important;
+  }
+
+  #hero h1 .line1,
+  #hero h1 .line2 {
+    display: block !important;
+    width: 100% !important;
+    max-width: calc(100vw - 2rem) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0.02em !important;
+    padding-right: 0.02em !important;
+    overflow: visible !important;
+    text-align: center !important;
+  }
+
+  #hero h1 .line2 {
+    white-space: nowrap !important;
+    font-size: clamp(2.1rem, 6.2vw, 5.2rem) !important;
+    letter-spacing: -0.045em !important;
+    line-height: 1.08 !important;
+    transform: scaleX(0.96);
+    transform-origin: center;
+  }
+
+  @media (max-width: 900px) {
+    #hero h1 {
+      font-size: clamp(2.6rem, 8.2vw, 4.1rem) !important;
+      letter-spacing: -0.035em !important;
+      line-height: 1.06 !important;
+    }
+
+    #hero h1 .line2 {
+      font-size: clamp(2.15rem, 7.1vw, 3.35rem) !important;
+      letter-spacing: -0.035em !important;
+      transform: scaleX(0.94);
+    }
+  }
+
+  @media (max-width: 640px) {
+    #hero {
+      padding-left: 0.85rem !important;
+      padding-right: 0.85rem !important;
+    }
+
+    #hero h1 {
+      font-size: clamp(2.3rem, 10vw, 3.45rem) !important;
+      line-height: 1.08 !important;
+      letter-spacing: -0.025em !important;
+    }
+
+    #hero h1 .line2 {
+      font-size: clamp(1.95rem, 7.9vw, 2.9rem) !important;
+      letter-spacing: -0.02em !important;
+      transform: scaleX(0.92);
+      max-width: calc(100vw - 1.4rem) !important;
+    }
+  }
+
+  @media (max-width: 420px) {
+    #hero h1 {
+      font-size: clamp(2rem, 9.8vw, 2.75rem) !important;
+    }
+
+    #hero h1 .line2 {
+      font-size: clamp(1.7rem, 7.6vw, 2.2rem) !important;
+      letter-spacing: -0.01em !important;
+      transform: scaleX(0.9);
+    }
+  }
+
 </style>
 </head>
 <body>
