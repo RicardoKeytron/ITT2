@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ingeniería Técnica de Telecomunicaciones | La profesión que diseña el futuro</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-2: #0d1b31;
+      --cyan: #22d3ee;
+      --cyan-2: #67e8f9;
+      --blue: #3b82f6;
+      --purple: #a855f7;
+      --pink: #ec4899;
+      --white: #ffffff;
+      --text: #e5eefc;
+      --muted: #9fb1c9;
+      --card: rgba(255,255,255,0.08);
+      --card-2: rgba(255,255,255,0.12);
+      --border: rgba(255,255,255,0.14);
+      --dark-text: #0f172a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      position: relative;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 10% 5%, rgba(34, 211, 238, 0.28), transparent 28rem),
+        radial-gradient(circle at 90% 18%, rgba(168, 85, 247, 0.22), transparent 26rem),
+        radial-gradient(circle at 55% 70%, rgba(59, 130, 246, 0.16), transparent 24rem),
+        linear-gradient(135deg, #07111f 0%, #0a1628 45%, #050816 100%);
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(7, 17, 31, 0.78);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      color: #05101f;
+      box-shadow: 0 20px 50px rgba(34, 211, 238, 0.28);
+      font-size: 24px;
+      font-weight: 900;
+    }
+
+    .brand-title {
+      font-size: 13px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--cyan-2);
+      font-weight: 800;
+    }
+
+    .brand-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-cta,
+    .button-primary,
+    .button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      white-space: nowrap;
+    }
+
+    .nav-cta {
+      background: var(--white);
+      color: #07111f;
+      padding: 12px 18px;
+      font-size: 14px;
+    }
+
+    .nav-cta:hover,
+    .button-primary:hover,
+    .button-secondary:hover {
+      transform: translateY(-2px);
+    }
+
+    .menu {
+      display: none;
+      color: var(--white);
+      font-size: 28px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      align-items: center;
+      gap: 56px;
+      padding: 78px 0 110px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(103, 232, 249, .28);
+      background: rgba(34, 211, 238, .1);
+      color: #cffafe;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      font-size: clamp(44px, 7vw, 82px);
+      line-height: .94;
+      letter-spacing: -0.06em;
+      font-weight: 950;
+      margin-bottom: 28px;
+    }
+
+    .gradient-text {
+      display: block;
+      background: linear-gradient(90deg, var(--cyan-2), #bfdbfe, #f0abfc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 20px;
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 34px;
+    }
+
+    .button-primary {
+      background: var(--cyan);
+      color: #06111f;
+      padding: 16px 24px;
+      box-shadow: 0 20px 55px rgba(34, 211, 238, .25);
+    }
+
+    .button-secondary {
+      background: rgba(255,255,255,.06);
+      color: var(--white);
+      padding: 15px 24px;
+      border: 1px solid rgba(255,255,255,.18);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 650px;
+    }
+
+    .stat {
+      padding: 20px;
+      border-radius: 26px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.06);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 32px;
+      color: var(--cyan-2);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .stat span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .visual-card-wrap {
+      position: relative;
+    }
+
+    .visual-card-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      transform: rotate(5deg);
+      border-radius: 34px;
+      background: linear-gradient(135deg, rgba(34,211,238,.32), rgba(236,72,153,.2));
+      filter: blur(18px);
+    }
+
+    .visual-card {
+      position: relative;
+      border-radius: 34px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      background: rgba(13, 27, 49, .82);
+      box-shadow: 0 36px 90px rgba(0,0,0,.36);
+    }
+
+    .browser-dots {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .dots span {
+      display: inline-block;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      margin-right: 7px;
+    }
+
+    .dots span:nth-child(1) { background: #fb7185; }
+    .dots span:nth-child(2) { background: #facc15; }
+    .dots span:nth-child(3) { background: #4ade80; }
+
+    .browser-label {
+      color: #71829a;
+      font-size: 12px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+
+    .mission {
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      color: #06111f;
+      margin-bottom: 16px;
+    }
+
+    .mission-icon {
+      font-size: 42px;
+      margin-bottom: 48px;
+    }
+
+    .mission small {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .mission h2 {
+      font-size: 32px;
+      line-height: 1.08;
+      letter-spacing: -.03em;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .mini-card,
+    .note-card {
+      border-radius: 24px;
+      background: rgba(255,255,255,.07);
+      padding: 20px;
+    }
+
+    .mini-card .emoji {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .mini-card p,
+    .note-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .note-card {
+      border: 1px solid rgba(103,232,249,.2);
+      background: rgba(34,211,238,.09);
+    }
+
+    section {
+      padding: 96px 0;
+    }
+
+    .section-light {
+      background: #ffffff;
+      color: var(--dark-text);
+    }
+
+    .section-soft {
+      background: #f1f5f9;
+      color: var(--dark-text);
+    }
+
+    .section-header {
+      max-width: 780px;
+      margin: 0 auto 58px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: #0891b2;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .25em;
+      font-weight: 950;
+      margin-bottom: 16px;
+    }
+
+    .section-header h2,
+    .split h2,
+    .cta h2 {
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.02;
+      letter-spacing: -.045em;
+      font-weight: 950;
+      margin-bottom: 22px;
+    }
+
+    .section-header p,
+    .split p,
+    .cta p {
+      color: #526174;
+      font-size: 18px;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .tech-card {
+      min-height: 260px;
+      padding: 26px;
+      border-radius: 28px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 10px 30px rgba(15,23,42,.04);
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+
+    .tech-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(15,23,42,.12);
+    }
+
+    .icon-box {
+      width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      border-radius: 20px;
+      background: #0f172a;
+      color: var(--cyan-2);
+      font-size: 27px;
+      margin-bottom: 20px;
+    }
+
+    .tech-card h3 {
+      font-size: 20px;
+      line-height: 1.18;
+      margin-bottom: 12px;
+      letter-spacing: -.02em;
+    }
+
+    .tech-card p {
+      color: #607086;
+      font-size: 15px;
+    }
+
+    .dark-section {
+      position: relative;
+      background:
+        radial-gradient(circle at 90% 12%, rgba(34,211,238,.18), transparent 28rem),
+        linear-gradient(135deg, #07111f 0%, #0d1b31 100%);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .split .eyebrow {
+      color: var(--cyan-2);
+    }
+
+    .split p {
+      color: var(--muted);
+    }
+
+    .check-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .check-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      color: #dce8f8;
+    }
+
+    .check {
+      color: var(--cyan-2);
+      font-weight: 950;
+      flex: 0 0 auto;
+    }
+
+    .message-card {
+      border-radius: 34px;
+      padding: 34px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.07);
+    }
+
+    .message-card h3 {
+      font-size: 34px;
+      line-height: 1.06;
+      letter-spacing: -.04em;
+      margin-bottom: 18px;
+    }
+
+    .message-highlight {
+      margin-top: 28px;
+      padding: 26px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      color: #06111f;
+      font-size: 24px;
+      line-height: 1.15;
+      font-weight: 950;
+    }
+
+    .paths-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .path {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      padding: 19px;
+      border-radius: 24px;
+      background: #ffffff;
+      box-shadow: 0 10px 30px rgba(15,23,42,.05);
+      font-weight: 850;
+    }
+
+    .path span {
+      width: 38px;
+      height: 38px;
+      flex: 0 0 auto;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: #cffafe;
+      color: #0e7490;
+      font-weight: 950;
+    }
+
+    .dark-box {
+      margin-top: 28px;
+      padding: 26px;
+      border-radius: 28px;
+      background: #0f172a;
+      color: #ffffff;
+    }
+
+    .dark-box p {
+      color: #b8c5d6;
+      font-size: 15px;
+      margin-top: 8px;
+    }
+
+    .reasons-box {
+      border-radius: 42px;
+      background: linear-gradient(135deg, #07111f, #111827 54%, #172554);
+      color: #ffffff;
+      padding: 56px;
+      box-shadow: 0 32px 80px rgba(15,23,42,.2);
+    }
+
+    .reason-list {
+      display: grid;
+      gap: 15px;
+    }
+
+    .reason {
+      display: flex;
+      gap: 18px;
+      padding: 22px;
+      border-radius: 26px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.06);
+    }
+
+    .reason-number {
+      color: var(--cyan-2);
+      font-size: 24px;
+      font-weight: 950;
+    }
+
+    .reason p {
+      color: #e6eef8;
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .cta {
+      text-align: center;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .cta-icon {
+      width: 72px;
+      height: 72px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 28px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      color: #06111f;
+      font-size: 36px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      max-width: 690px;
+      margin: 0 auto;
+    }
+
+    .cta-actions {
+      margin-top: 34px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    footer {
+      padding: 34px 0;
+      border-top: 1px solid rgba(255,255,255,.1);
+      background: #07111f;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeIn .75s ease forwards;
+    }
+
+    .delay-1 { animation-delay: .1s; }
+    .delay-2 { animation-delay: .2s; }
+    .delay-3 { animation-delay: .3s; }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1020px) {
+      .hero,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero {
+        padding-top: 54px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .menu {
+        display: block;
+      }
+
+      .hero {
+        gap: 36px;
+        padding: 42px 0 78px;
+      }
+
+      .hero-text {
+        font-size: 17px;
+      }
+
+      .stats,
+      .mini-grid,
+      .paths-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tech-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 72px 0;
+      }
+
+      .reasons-box {
+        padding: 32px 22px;
+        border-radius: 30px;
+      }
+
+      .message-card {
+        padding: 26px;
+      }
+
+      .message-card h3 {
+        font-size: 28px;
+      }
+
+      .mission h2 {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="container nav">
+        <a class="brand" href="#inicio" aria-label="Inicio COITT">
+          <div class="brand-icon">⌁</div>
+          <div>
+            <div class="brand-title">COITT</div>
+            <div class="brand-subtitle">Ingeniería Técnica de Telecomunicación</div>
+          </div>
+        </a>
+
+        <nav class="nav-links" aria-label="Navegación principal">
+          <a href="#futuro">Tecnologías</a>
+          <a href="#ia">IA</a>
+          <a href="#salidas">Salidas</a>
+          <a href="#estudiar">Estudiar</a>
+        </nav>
+
+        <a class="nav-cta" href="#estudiar">Descubre la carrera</a>
+        <div class="menu" aria-hidden="true">☰</div>
+      </div>
+    </header>
+
+    <main id="inicio">
+      <section class="hero container">
+        <div class="fade-in">
+          <div class="badge">✦ Para estudiantes de ESO y Bachillerato</div>
+          <h1>
+            Ingeniería Técnica de Telecomunicaciones,
+            <span class="gradient-text">la profesión que diseña el futuro.</span>
+          </h1>
+          <p class="hero-text">
+            Cada mensaje, videojuego online, satélite, robot, coche conectado, centro de datos o sistema de IA necesita algo esencial: comunicaciones, redes, electrónica, seguridad e infraestructura. Ahí entra la Ingeniería Técnica de Telecomunicación.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button-primary" href="#futuro">Quiero saber más →</a>
+            <a class="button-secondary" href="#salidas">Ver salidas profesionales</a>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>6G</strong>
+              <span>la próxima gran revolución de las redes</span>
+            </div>
+            <div class="stat">
+              <strong>IA</strong>
+              <span>necesita datos, sensores, redes y cloud</span>
+            </div>
+            <div class="stat">
+              <strong>24/7</strong>
+              <span>un mundo siempre conectado</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="visual-card-wrap fade-in delay-2">
+          <div class="visual-card">
+            <div class="browser-dots">
+              <div class="dots"><span></span><span></span><span></span></div>
+              <div class="browser-label">future.network</div>
+            </div>
+
+            <div class="mission">
+              <div class="mission-icon">🌐</div>
+              <small>Misión</small>
+              <h2>Conectar personas, máquinas, datos e ideas.</h2>
+            </div>
+
+            <div class="mini-grid">
+              <div class="mini-card">
+                <div class="emoji">🛡️</div>
+                <strong>Proteger</strong>
+                <p>redes, datos y servicios críticos</p>
+              </div>
+              <div class="mini-card">
+                <div class="emoji">🚀</div>
+                <strong>Innovar</strong>
+                <p>con IA, 6G, cloud y robótica</p>
+              </div>
+            </div>
+
+            <div class="note-card">
+              <p>No es solo una carrera técnica. Es una forma de participar en las tecnologías que van a transformar el mundo durante las próximas décadas.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <section id="futuro" class="section-light">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow">Tecnologías del futuro</div>
+        <h2>La telecomunicación está detrás de casi todo lo que viene.</h2>
+        <p>
+          Cuando una tecnología necesita conectarse, transmitir datos, medir el mundo físico, operar en tiempo real o funcionar de forma segura, necesita perfiles de telecomunicación.
+        </p>
+      </div>
+
+      <div class="tech-grid">
+        <article class="tech-card">
+          <div class="icon-box">📡</div>
+          <h3>6G y comunicaciones avanzadas</h3>
+          <p>Redes ultrarrápidas, baja latencia, IoT masivo y conectividad para ciudades inteligentes, industria y salud digital.</p>
+        </article>
+
+        <article class="tech-card">
+          <div class="icon-box">🧠</div>
+          <h3>Inteligencia Artificial aplicada</h3>
+          <p>Sistemas inteligentes conectados, análisis de datos, automatización y soluciones que combinan software, redes y electrónica.</p>
+        </article>
+
+        <article class="tech-card">
+          <div class="icon-box">🤖</div>
+          <h3>Robótica y sistemas autónomos</h3>
+          <p>Robots industriales, drones, sensores, comunicaciones máquina a máquina y plataformas inteligentes.</p>
+        </article>
+
+        <article class="tech-card">
+          <div class="icon-box">🔐</div>
+          <h3>Ciberseguridad</h3>
+          <p>Protección de redes, dispositivos, datos, infraestructuras críticas y servicios digitales frente a amenazas reales.</p>
+        </article>
+
+        <article class="tech-card">
+          <div class="icon-box">⚛️</div>
+          <h3>Computación cuántica y electrónica</h3>
+          <p>Nuevas arquitecturas, sensores, comunicaciones seguras y tecnologías que transformarán la computación.</p>
+        </article>
+
+        <article class="tech-card">
+          <div class="icon-box">🚗</div>
+          <h3>Vehículos autónomos conectados</h3>
+          <p>Coches, trenes, drones y sistemas de transporte que necesitan comunicaciones fiables, sensores y procesamiento en tiempo real.</p>
+        </article>
+
+        <article class="tech-card">
+          <div class="icon-box">🏢</div>
+          <h3>Centros de datos</h3>
+          <p>La infraestructura física y lógica que sostiene Internet, la nube, la IA, el streaming y los servicios digitales globales.</p>
+        </article>
+
+        <article class="tech-card">
+          <div class="icon-box">☁️</div>
+          <h3>Cloud y edge computing</h3>
+          <p>Servicios en la nube, procesamiento cerca del usuario, plataformas distribuidas y aplicaciones digitales escalables.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="ia" class="dark-section">
+    <div class="container split">
+      <div>
+        <div class="badge">✦ Una carrera preparada para la era de la IA</div>
+        <h2>La IA cambiará muchos trabajos. Pero también necesitará ingenieros que la hagan posible.</h2>
+        <p>
+          La Inteligencia Artificial no vive en el aire: necesita datos, sensores, redes, centros de datos, comunicaciones seguras, cloud, dispositivos conectados y sistemas fiables. La Ingeniería Técnica de Telecomunicación se sitúa justo en esa intersección.
+        </p>
+
+        <div class="check-list">
+          <div class="check-item"><span class="check">✓</span><span>Diseñar infraestructuras donde la IA pueda funcionar.</span></div>
+          <div class="check-item"><span class="check">✓</span><span>Conectar dispositivos, sensores, robots y plataformas inteligentes.</span></div>
+          <div class="check-item"><span class="check">✓</span><span>Proteger los datos y las comunicaciones que usa la IA.</span></div>
+          <div class="check-item"><span class="check">✓</span><span>Traducir ideas tecnológicas en soluciones reales para empresas y sociedad.</span></div>
+        </div>
+      </div>
+
+      <div class="message-card">
+        <div class="eyebrow">Mensaje clave</div>
+        <h3>No estudies solo para usar tecnología. Estudia para entenderla, construirla y liderarla.</h3>
+        <p>
+          En un mundo donde muchas tareas se automatizarán, tendrán más valor las personas capaces de comprender sistemas complejos, resolver problemas técnicos, integrar tecnologías y tomar decisiones responsables.
+        </p>
+        <div class="message-highlight">
+          La IA no sustituye el criterio técnico. Lo hace más importante.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="salidas" class="section-soft">
+    <div class="container split">
+      <div>
+        <div class="eyebrow">Salidas profesionales</div>
+        <h2>Una carrera. Muchos caminos.</h2>
+        <p>
+          Las telecomunicaciones no son solo antenas o telefonía. Son la base de la sociedad digital: Internet, cloud, ciberseguridad, industria conectada, satélites, audiovisuales, IoT y mucho más.
+        </p>
+
+        <div class="dark-box">
+          <strong>Perfil versátil, tecnológico y con impacto.</strong>
+          <p>Ideal para estudiantes curiosos, creativos, con interés por la tecnología y ganas de resolver problemas reales.</p>
+        </div>
+      </div>
+
+      <div class="paths-grid">
+        <div class="path"><span>✓</span>Ingeniería de redes y comunicaciones</div>
+        <div class="path"><span>✓</span>Ciberseguridad y protección de infraestructuras</div>
+        <div class="path"><span>✓</span>Cloud, centros de datos y sistemas distribuidos</div>
+        <div class="path"><span>✓</span>IoT, sensores y ciudades inteligentes</div>
+        <div class="path"><span>✓</span>Robótica, drones y automatización industrial</div>
+        <div class="path"><span>✓</span>IA aplicada a sistemas conectados</div>
+        <div class="path"><span>✓</span>Telecomunicaciones espaciales y satélites</div>
+        <div class="path"><span>✓</span>Consultoría tecnológica y gestión de proyectos</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-light">
+    <div class="container reasons-box">
+      <div class="split">
+        <div>
+          <div class="eyebrow">¿Por qué elegirla?</div>
+          <h2>Porque el futuro necesita personas que sepan conectar el mundo.</h2>
+          <p>
+            Si te gusta entender cómo funcionan las cosas, imaginar soluciones nuevas y trabajar con tecnología de verdad, esta ingeniería puede abrirte puertas en sectores muy diferentes.
+          </p>
+        </div>
+
+        <div class="reason-list">
+          <div class="reason"><div class="reason-number">01</div><p>Porque une tecnología, creatividad e impacto real en la sociedad.</p></div>
+          <div class="reason"><div class="reason-number">02</div><p>Porque está presente en casi todo: móvil, satélites, IA, redes, sensores, cloud y ciberseguridad.</p></div>
+          <div class="reason"><div class="reason-number">03</div><p>Porque ofrece salidas profesionales en sectores muy distintos y con alta demanda tecnológica.</p></div>
+          <div class="reason"><div class="reason-number">04</div><p>Porque no solo usa la tecnología: ayuda a diseñarla, integrarla, protegerla y hacerla funcionar.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="estudiar" class="dark-section">
+    <div class="container cta">
+      <div class="cta-icon">🎓</div>
+      <h2>¿Te imaginas diseñando las tecnologías que usarán millones de personas?</h2>
+      <p>
+        Empieza explorando la Ingeniería Técnica de Telecomunicación. Puede ser el primer paso para trabajar en la frontera entre redes, IA, robótica, cloud, seguridad, electrónica y comunicaciones.
+      </p>
+      <div class="cta-actions">
+        <a class="button-primary" href="#inicio">Encuentra dónde estudiar →</a>
+        <a class="button-secondary" href="#salidas">Habla con un profesional</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="brand">
+        <div class="brand-icon">⌁</div>
+        <div>
+          <div class="brand-title">COITT</div>
+          <div class="brand-subtitle">Ingeniería Técnica de Telecomunicación</div>
+        </div>
+      </div>
+      <div>La profesión que diseña el futuro.</div>
+    </div>
+  </footer>
+</body>
+</html>
