@@ -94,17 +94,17 @@
   /* ===== HERO ===== */
   #hero {
     position: relative;
-    max-width: none;
-    width: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 8rem clamp(1rem, 3vw, 4rem) 4rem;
+    padding: 8rem 2rem 4rem;
     overflow: hidden;
     z-index: 1;
+    max-width: none;
+    width: 100%;
   }
 
   .hero-orb {
@@ -176,77 +176,11 @@
     font-weight: 800;
     line-height: 1.05;
     letter-spacing: -2px;
-    margin-bottom: 1.5rem;
+    margin: 0 auto 1.5rem;
     animation: fadeUp 0.8s ease 0.2s both;
-  }
-
-
-  /*
-    Ajuste responsive del título principal:
-    el HERO no debe heredar el max-width genérico de las secciones.
-    Además, la segunda línea usa un tamaño propio y margen de seguridad para
-    que "Telecomunicación" no quede recortado por los laterales en navegadores
-    con background-clip + fuentes display.
-  */
-  #hero h1 {
-    width: 100%;
-    max-width: min(96vw, 1600px);
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 0.08em;
-    padding-right: 0.08em;
+    width: min(100%, 1500px);
+    padding: 0 1rem;
     overflow: visible;
-  }
-
-  #hero h1 .line1,
-  #hero h1 .line2 {
-    display: block;
-    max-width: 100%;
-    overflow: visible;
-    padding-left: 0.06em;
-    padding-right: 0.06em;
-  }
-
-  #hero h1 .line2 {
-    font-size: clamp(2.7rem, 6.8vw, 5.3rem);
-    line-height: 1.08;
-    padding-bottom: 0.08em;
-  }
-
-  @media (max-width: 900px) {
-    h1 {
-      font-size: clamp(2.25rem, 9vw, 4.2rem);
-      letter-spacing: -1px;
-    }
-
-    #hero h1 .line2 {
-      font-size: clamp(2.45rem, 9vw, 4.2rem);
-    }
-  }
-
-  @media (max-width: 520px) {
-    #hero {
-      padding-left: 0.75rem;
-      padding-right: 0.75rem;
-    }
-
-    h1 {
-      font-size: clamp(2rem, 10vw, 3.1rem);
-      letter-spacing: -0.5px;
-      line-height: 1.08;
-    }
-
-    #hero h1 {
-      max-width: 98vw;
-      padding-left: 0.04em;
-      padding-right: 0.04em;
-    }
-
-    #hero h1 .line2 {
-      font-size: clamp(2.05rem, 11vw, 3.1rem);
-      padding-left: 0.03em;
-      padding-right: 0.03em;
-    }
   }
 
   h1 .line1 { display: block; color: white; }
@@ -258,6 +192,9 @@
     -webkit-text-fill-color: transparent;
     animation: gradShift 4s linear infinite;
     background-size: 200%;
+    white-space: nowrap;
+    font-size: min(7vw, 5.5rem);
+    letter-spacing: -0.045em;
   }
 
   @keyframes gradShift {
@@ -440,7 +377,7 @@
   .tech-card.c6::before { background: linear-gradient(135deg, rgba(255,165,0,0.05), transparent); }
   .tech-card.c7::before { background: linear-gradient(135deg, rgba(123,47,255,0.05), transparent); }
   .tech-card.c8::before { background: linear-gradient(135deg, rgba(255,0,170,0.05), transparent); }
-  .tech-card.c9::before { background: linear-gradient(135deg, rgba(0,245,255,0.05), rgba(99,240,100,0.04), transparent); }
+  .tech-card.c9::before { background: linear-gradient(135deg, rgba(0,245,255,0.05), transparent); }
 
   .card-icon {
     font-size: 2.2rem;
@@ -880,93 +817,52 @@
   }
 
 
-  /* ===== HERO TITLE MOBILE/TABLET HARD FIX =====
-     Evita que "Telecomunicación" se corte en móviles, tablets y navegadores
-     con renderizado distinto de fuentes + background-clip.
-  */
-  #hero {
-    max-width: none !important;
-    width: 100% !important;
-    padding-left: clamp(1rem, 4vw, 2rem) !important;
-    padding-right: clamp(1rem, 4vw, 2rem) !important;
-  }
-
-  #hero h1 {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    text-align: center !important;
-    overflow: visible !important;
-  }
-
-  #hero h1 .line1,
-  #hero h1 .line2 {
-    display: block !important;
-    width: 100% !important;
-    max-width: calc(100vw - 2rem) !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding-left: 0.02em !important;
-    padding-right: 0.02em !important;
-    overflow: visible !important;
-    text-align: center !important;
-  }
-
-  #hero h1 .line2 {
-    white-space: nowrap !important;
-    font-size: clamp(2.1rem, 6.2vw, 5.2rem) !important;
-    letter-spacing: -0.045em !important;
-    line-height: 1.08 !important;
-    transform: scaleX(0.96);
-    transform-origin: center;
-  }
-
+  /* ===== HERO TITLE FIX: evita cortes en móvil y navegadores con fuentes anchas ===== */
   @media (max-width: 900px) {
-    #hero h1 {
-      font-size: clamp(2.6rem, 8.2vw, 4.1rem) !important;
-      letter-spacing: -0.035em !important;
-      line-height: 1.06 !important;
-    }
-
-    #hero h1 .line2 {
-      font-size: clamp(2.15rem, 7.1vw, 3.35rem) !important;
-      letter-spacing: -0.035em !important;
-      transform: scaleX(0.94);
-    }
-  }
-
-  @media (max-width: 640px) {
     #hero {
-      padding-left: 0.85rem !important;
-      padding-right: 0.85rem !important;
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
 
-    #hero h1 {
-      font-size: clamp(2.3rem, 10vw, 3.45rem) !important;
-      line-height: 1.08 !important;
-      letter-spacing: -0.025em !important;
+    h1 {
+      width: 100%;
+      max-width: 100%;
+      padding: 0;
+      font-size: clamp(3.05rem, 13.2vw, 5rem);
+      line-height: 1.04;
+      letter-spacing: -0.055em;
     }
 
-    #hero h1 .line2 {
-      font-size: clamp(1.95rem, 7.9vw, 2.9rem) !important;
-      letter-spacing: -0.02em !important;
-      transform: scaleX(0.92);
-      max-width: calc(100vw - 1.4rem) !important;
+    h1 .line2 {
+      white-space: nowrap;
+      font-size: clamp(2.25rem, 8.7vw, 3.35rem);
+      letter-spacing: -0.06em;
+      transform: none;
+      max-width: 100%;
     }
   }
 
-  @media (max-width: 420px) {
-    #hero h1 {
-      font-size: clamp(2rem, 9.8vw, 2.75rem) !important;
+  @media (max-width: 480px) {
+    #hero {
+      padding-top: 7.2rem;
+      padding-left: 0.8rem;
+      padding-right: 0.8rem;
     }
 
-    #hero h1 .line2 {
-      font-size: clamp(1.7rem, 7.6vw, 2.2rem) !important;
-      letter-spacing: -0.01em !important;
-      transform: scaleX(0.9);
+    h1 {
+      font-size: clamp(2.65rem, 12.3vw, 3.45rem);
+      letter-spacing: -0.055em;
+    }
+
+    h1 .line2 {
+      font-size: clamp(2rem, 8.1vw, 2.55rem);
+      letter-spacing: -0.055em;
+    }
+
+    .badge {
+      font-size: 0.72rem;
+      padding: 0.35rem 0.75rem;
+      max-width: calc(100vw - 2rem);
     }
   }
 
@@ -1120,15 +1016,15 @@
     <div class="tech-card c8 reveal">
       <span class="card-icon">🛰️</span>
       <div class="card-title">Satélites & IoT Global</div>
-      <p class="card-desc">Starlink, constelaciones LEO, billions de dispositivos conectados. La ingeniería de telecomunicaciones es la columna vertebral de un mundo hiperconectado.</p>
+      <p class="card-desc">Starlink, constelaciones LEO, miles de millones de dispositivos conectados. La ingeniería de telecomunicaciones es la columna vertebral de un mundo hiperconectado.</p>
       <span class="card-tag tag-magenta">Satélites · IoT · Espacio</span>
     </div>
 
     <div class="tech-card c9 reveal">
       <span class="card-icon">🚁</span>
       <div class="card-title">Drones & Ciudades inteligentes</div>
-      <p class="card-desc">Drones de reparto, vigilancia ambiental, emergencias, tráfico inteligente, sensores urbanos y servicios públicos conectados. Todo necesita comunicaciones fiables, geolocalización, datos en tiempo real y ciberseguridad.</p>
-      <span class="card-tag tag-green">Drones · Smart Cities · IoT</span>
+      <p class="card-desc">Drones de reparto, emergencias, agricultura de precisión, tráfico inteligente y sensores urbanos. Todo necesita comunicaciones fiables, seguras y en tiempo real.</p>
+      <span class="card-tag tag-cyan">Drones · Smart Cities · IoT</span>
     </div>
   </div>
 </section>
